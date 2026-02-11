@@ -15,7 +15,7 @@
 </head>
 <body>
   <nav>
-    <a href="/">Home</a>
+    <a href="{{ '/' | relative_url }}">Home</a>
   </nav>
 
   <div id="container" style="display:flex; flex-wrap:wrap;">
@@ -23,7 +23,9 @@
       <h3>Posts</h3>
       <ul>
         {% for post in site.posts %}
-          <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </li>
         {% endfor %}
       </ul>
     </aside>

@@ -1,0 +1,6 @@
+title: "Minu blogi"
+description: "minimaalne blogi kasutades markdowni"
+baseurl: ""
+url: "https://akseltalvoja.github.io"
+markdown: kramdown
+theme: null

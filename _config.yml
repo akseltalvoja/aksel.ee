@@ -1,10 +1,6 @@
 title: "Minu blogi"
 description: "minimaalne blogi kasutades markdowni"
 
-remote_theme: pages-themes/minimal@v0.2.0
-plugins:
-  - jekyll-remote-theme
-
 baseurl: ""
 url: "https://www.aksel.ee"
 

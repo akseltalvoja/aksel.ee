@@ -4,12 +4,75 @@
   <meta charset="UTF-8">
   <title>{{ page.title }}</title>
   <style>
-    body { font-family: sans-serif; max-width: 900px; margin: auto; padding: 1rem; }
-    nav a { text-decoration: none; color: #e07a5f; }
-    nav a:hover { text-decoration: underline; }
-    @media (max-width: 600px) {
-      div#container { flex-direction: column; }
-      aside { width: 100%; margin-right: 0; margin-bottom: 1rem; }
+    body {
+      font-family: sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 1rem;
+      line-height: 1.6;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #e07a5f;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    #container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    aside {
+      flex: 1 1 200px;
+      min-width: 200px;
+      max-width: 250px;
+    }
+
+    main {
+      flex: 3 1 400px;
+      min-width: 250px;
+    }
+
+    aside h3 {
+      margin-top: 0;
+    }
+
+    aside ul {
+      padding-left: 1rem;
+      list-style: disc;
+    }
+
+    aside li {
+      margin-bottom: 0.5rem;
+    }
+
+    main img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 1rem 0;
+    }
+
+    @media (max-width: 700px) {
+      #container {
+        flex-direction: column;
+      }
+
+      aside {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 0 1rem 0;
+      }
+
+      main {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -18,8 +81,8 @@
     <a href="{{ '/' | relative_url }}">Home</a>
   </nav>
 
-  <div id="container" style="display:flex; flex-wrap:wrap;">
-    <aside style="width:200px; margin-right:20px; flex:1 1 200px;">
+  <div id="container">
+    <aside>
       <h3>Posts</h3>
       <ul>
         {% for post in site.posts %}
@@ -29,10 +92,10 @@
         {% endfor %}
       </ul>
     </aside>
-    <main style="flex:3 1 400px;">
+
+    <main>
       {{ content }}
     </main>
   </div>
 </body>
 </html>
-

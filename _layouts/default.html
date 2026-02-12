@@ -9,34 +9,50 @@
       max-width: 900px;
       margin: auto;
       padding: 1rem;
-      line-height: 1.6;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
     }
 
     nav a {
       text-decoration: none;
       color: #e07a5f;
       font-weight: bold;
+      font-size: 1.1rem;
     }
 
     nav a:hover {
       text-decoration: underline;
     }
 
+    #burger {
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: none; /* hidden on desktop */
+    }
+
     #container {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
+      position: relative;
     }
 
+    /* Sidebar */
     aside {
       flex: 1 1 200px;
       min-width: 200px;
       max-width: 250px;
-    }
-
-    main {
-      flex: 3 1 400px;
-      min-width: 250px;
+      transition: transform 0.3s ease;
     }
 
     aside h3 {
@@ -52,6 +68,11 @@
       margin-bottom: 0.5rem;
     }
 
+    main {
+      flex: 3 1 400px;
+      min-width: 250px;
+    }
+
     main img {
       max-width: 100%;
       height: auto;
@@ -59,15 +80,31 @@
       margin: 1rem 0;
     }
 
+    /* Mobile styles */
     @media (max-width: 700px) {
+      #burger {
+        display: block;
+      }
+
       #container {
         flex-direction: column;
       }
 
       aside {
-        width: 100%;
-        max-width: 100%;
-        margin: 0 0 1rem 0;
+        position: absolute;
+        top: 60px; /* space for nav */
+        left: 0;
+        width: 80%;
+        max-width: 300px;
+        background: #fff;
+        padding: 1rem;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        transform: translateX(-110%);
+        z-index: 10;
+      }
+
+      aside.open {
+        transform: translateX(0);
       }
 
       main {
@@ -77,25 +114,38 @@
   </style>
 </head>
 <body>
+  <!-- Navigation -->
   <nav>
     <a href="{{ '/' | relative_url }}">Home</a>
+    <button id="burger" aria-label="Toggle posts menu">☰</button>
   </nav>
 
+  <!-- Main container -->
   <div id="container">
-    <aside>
+    <!-- Sidebar -->
+    <aside id="sidebar">
       <h3>Posts</h3>
       <ul>
         {% for post in site.posts %}
-          <li>
-            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          </li>
+          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
         {% endfor %}
       </ul>
     </aside>
 
+    <!-- Main content -->
     <main>
       {{ content }}
     </main>
   </div>
+
+  <!-- Burger menu script -->
+  <script>
+    const burger = document.getElementById('burger');
+    const sidebar = document.getElementById('sidebar');
+
+    burger.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>

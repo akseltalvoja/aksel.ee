@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Esimese postituse katse | Minu blogi</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <a href="/" class="logo">Minu blogi</a>
+    <button id="burger" aria-label="Toggle menu">☰</button>
+  </header>
+
+  <div class="layout">
+
+    <!-- Sidebar always exists -->
+    <aside id="sidebar">
+      <h3>Posts</h3>
+      <ul>
+        
+          <li><a href="/2026/02/10/teine-postitus.html">Teise postituse katse</a></li>
+        
+          <li><a href="/2026/02/10/esimene-postitus.html">Esimese postituse katse</a></li>
+        
+      </ul>
+    </aside>
+
+    <main>
+      <main class="post">
+
+  <article>
+    <h1>Esimese postituse katse</h1>
+
+    <p class="post-date">
+      10.02.2026
+    </p>
+
+    <p>Tere! Siin on minu esimese postituse katse.</p>
+
+<p><img src="/assets/photo1.png" alt="Foto katsetus" /></p>
+
+<p>Veel natuke teksti.</p>
+
+
+    <p><a href="/">← Back to Home</a></p>
+  </article>
+
+</main>
+    </main>
+
+  </div>
+
+  <script>
+    // Make sure sidebar exists
+    const burger = document.getElementById('burger');
+    const sidebar = document.getElementById('sidebar');
+
+    burger.addEventListener('click', () => {
+      if (sidebar) sidebar.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

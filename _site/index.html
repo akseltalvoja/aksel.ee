@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kiire blogi | Minu blogi</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <a href="/" class="logo">Minu blogi</a>
+    <button id="burger" aria-label="Toggle menu">☰</button>
+  </header>
+
+  <div class="layout">
+
+    <!-- Sidebar always exists -->
+    <aside id="sidebar">
+      <h3>Posts</h3>
+      <ul>
+        
+          <li><a href="/2026/02/10/teine-postitus.html">Teise postituse katse</a></li>
+        
+          <li><a href="/2026/02/10/esimene-postitus.html">Esimese postituse katse</a></li>
+        
+      </ul>
+    </aside>
+
+    <main>
+      <h1 id="tere">Tere!</h1>
+
+<p>Siin on minu postitused:</p>
+
+<ul>
+
+  <li>
+    <a href="/2026/02/10/teine-postitus.html">Teise postituse katse</a> — 10.02.2026
+  </li>
+
+  <li>
+    <a href="/2026/02/10/esimene-postitus.html">Esimese postituse katse</a> — 10.02.2026
+  </li>
+
+</ul>
+
+    </main>
+
+  </div>
+
+  <script>
+    // Make sure sidebar exists
+    const burger = document.getElementById('burger');
+    const sidebar = document.getElementById('sidebar');
+
+    burger.addEventListener('click', () => {
+      if (sidebar) sidebar.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

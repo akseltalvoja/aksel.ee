@@ -3,127 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title }}</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      max-width: 900px;
-      margin: auto;
-      padding: 1rem;
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-    /* Navigation */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #e07a5f;
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    #burger {
-      font-size: 1.5rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: none; /* hidden on desktop */
-    }
-
-    #container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      position: relative;
-    }
-
-    /* Sidebar */
-    aside {
-      flex: 1 1 200px;
-      min-width: 200px;
-      max-width: 250px;
-      transition: transform 0.3s ease;
-    }
-
-    aside h3 {
-      margin-top: 0;
-    }
-
-    aside ul {
-      padding-left: 1rem;
-      list-style: disc;
-    }
-
-    aside li {
-      margin-bottom: 0.5rem;
-    }
-
-    main {
-      flex: 3 1 400px;
-      min-width: 250px;
-    }
-
-    main img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 1rem 0;
-    }
-
-    /* Mobile styles */
-    @media (max-width: 700px) {
-      #burger {
-        display: block;
-      }
-
-      #container {
-        flex-direction: column;
-      }
-
-      aside {
-        position: absolute;
-        top: 60px; /* space for nav */
-        left: 0;
-        width: 80%;
-        max-width: 300px;
-        background: #fff;
-        padding: 1rem;
-        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-        transform: translateX(-110%);
-        z-index: 10;
-      }
-
-      aside.open {
-        transform: translateX(0);
-      }
-
-      main {
-        width: 100%;
-      }
-    }
-  </style>
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-    <a href="{{ '/' | relative_url }}">Home</a>
-    <button id="burger" aria-label="Toggle posts menu">☰</button>
-  </nav>
 
-  <!-- Main container -->
-  <div id="container">
-    <!-- Sidebar -->
+  <header class="nav">
+    <a href="{{ '/' | relative_url }}" class="logo">{{ site.title }}</a>
+    <button id="burger" aria-label="Toggle menu">☰</button>
+  </header>
+
+  <div class="layout">
+
+    <!-- Sidebar always exists -->
     <aside id="sidebar">
       <h3>Posts</h3>
       <ul>
@@ -133,20 +25,21 @@
       </ul>
     </aside>
 
-    <!-- Main content -->
     <main>
       {{ content }}
     </main>
+
   </div>
 
-  <!-- Burger menu script -->
   <script>
+    // Make sure sidebar exists
     const burger = document.getElementById('burger');
     const sidebar = document.getElementById('sidebar');
 
     burger.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
+      if (sidebar) sidebar.classList.toggle('open');
     });
   </script>
+
 </body>
 </html>

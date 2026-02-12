@@ -6,7 +6,6 @@ plugins:
   - jekyll-remote-theme
 
 baseurl: ""
-url: "https://aksel.ee"
+url: "https://www.aksel.ee"
 
 markdown: kramdown
-
